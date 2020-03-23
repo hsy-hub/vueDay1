@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>v-bind指令</title>
+    <script type="text/javascript" src="lib/vue-2.4.0.js"></script>
+</head>
+<body>
+<!--v-bind指令绑定到某个属性上 后面跟上的是属性的名字-->
+<!--简化写法是“:+属性”-->
+<div id="app">
+    <input type="button" v-bind:value="msg" :title="msg2+1">
+</div>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"v-bind指令",
+            msg2:123
+        }
+    })
+</script>
+
+</body>
+</html>

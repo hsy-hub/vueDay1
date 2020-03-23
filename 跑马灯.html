@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跑马灯</title>
+    <script type="text/javascript" src="lib/vue-2.4.0.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="button" value="开始" @click="start">
+    <input type="button" value="结束" @click="stop">
+    {{msg2}}
+</div>
+ <!--分析 点击开始按钮把文字的第一个字放到最后 后面的字依次前置-->
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg2:"跑马灯",
+            intervale:null
+        },
+        methods:{
+            //方法的定义方式 方法名:function
+            start:function () {
+                //方法如果要访问属性的值必须要用this关键字
+                if (this.intervale != null) return;
+                this.intervale = setInterval(() => {
+                var start = this.msg2.substring(0, 1);
+                var end = this.msg2.substring(1);
+                this.msg2 = end + start;
+            },1000)
+        },
+            stop:function () {
+                clearInterval(this.intervale);
+                this.intervale = null;
+            }
+        }
+    })
+</script>
+</body>
+</html>

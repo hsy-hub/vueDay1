@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>v-on指令</title>
+    <script type="text/javascript" src="lib/vue-2.4.0.js"></script>
+</head>
+<body>
+<div id="app">
+    <!--v-on绑定机制主要是绑定事件 click mouseover 简写方式@mouseover=v-on:mouseover-->
+    <input type="button" v-on:click="fun1" :value="msg" @mouseover="fun2">
+    <input type="text" @blur="">
+</div>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            msg:"v-on指令",
+            msg2:"鼠标滑过了"
+        },
+        methods:{
+            //方法的定义方式 方法名:function
+            fun1:function () {
+                //方法如果要访问属性的值必须要用this关键字
+                alert("我被调用了");
+                alert(this.msg)
+            },
+    fun2:function () {
+        alert(this.msg2)
+    }
+        }
+    })
+</script>
+
+</body>
+</html>
